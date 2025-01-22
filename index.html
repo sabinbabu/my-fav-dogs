@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+      delay
+    ></script>
+
+    <title>Favorite Dogs</title>
+  </head>
+  <body>
+    <!-- header -->
+    <nav class="navbar bg-dark p-3">
+      <h3 class="text-light">Fav Dogs</h3>
+      <form class="d-flex" role="search">
+        <input
+          id="search-text"
+          class="form-control"
+          type="search"
+          placeholder="Search Favorite"
+        />
+        <button id="search-btn" class="btn">
+          <i class="fa-solid fa-magnifying-glass text-light"></i>
+        </button>
+      </form>
+    </nav>
+    <!-- main -->
+    <div class="main-container">
+      <div class="row" style="height: 92vh">
+        <!-- dog selector -->
+        <div
+          id="dog-selector-container"
+          class="col-4 d-flex justify-content-center align-items-center bg-success"
+          style="--bs-bg-opacity: 0.5"
+        >
+          <div class="card" style="width: 18rem">
+            <img
+              id="dog-image"
+              class="card-img-top"
+              src="https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 id="dog-name" class="card-title">Card Title</h5>
+              <p id="dog-description" class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
+                nihil numquam non dolore voluptatem delectus nobis odit
+                repudiandae, laudantium adipisci soluta iste similique, eos quae
+                obcaecati sapiente deserunt excepturi accusantium!
+              </p>
+              <div class="d-flex justify-content-between">
+                <button id="next-btn" class="btn btn-success">Next</button>
+                <button id="fav-btn" class="btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- favorite -->
+        <div class="favorite-container col p-2 .bg-light.bg-gradient">
+          <h2 class="">My Favorites</h2>
+          <div class="d-flex flex-wrap">
+            <div class="card m-2" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card Title</h5>
+                <div class="d-flex justify-content-end">
+                  <button id="fav-btn" class="btn">
+                    <i class="fa-solid fa-heart text-danger"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card m-2" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card Title</h5>
+                <div class="d-flex justify-content-end">
+                  <button id="fav-btn" class="btn">
+                    <i class="fa-solid fa-heart text-danger"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <script src="./script.js"></script>
+  </body>
+</html>
