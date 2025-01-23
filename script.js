@@ -2,6 +2,10 @@ const API = "https://api.freeapi.app/api/v1/public/dogs/dog/random";
 
 const dogDisplayContainer = document.querySelector("#dog-selector-container");
 const favoriteContainer = document.querySelector("#favorite-container");
+const searchedText = document.querySelector("#search-text");
+const searchBtn = document.querySelector("#search-btn");
+const goBackBtn = document.querySelector("#go-back-btn");
+
 let favoriteDogArray = [];
 let isFavIconActive = false;
 
@@ -78,14 +82,14 @@ const handleFavBtnClick = (...data) => {
     isFavIconActive = true;
   }
   handleFavBtnColor();
-  displayFavoriteData();
+  displayFavoriteData(favoriteDogArray);
 };
 
 // Display favorite data
-const displayFavoriteData = () => {
+const displayFavoriteData = (dogArray) => {
   let favDog = "";
-  if (favoriteDogArray != "") {
-    favoriteDogArray.forEach((dog) => {
+  if (dogArray != "") {
+    dogArray.forEach((dog) => {
       favDog += ` <div class="card m-2 h-50" style="width: 18rem">
         <img
           class="card-img-top"
@@ -109,6 +113,11 @@ const displayFavoriteData = () => {
   favoriteContainer.innerHTML = favDog;
 };
 
+// toggle go back button visibility
+const toggleGoBackButtonVisibility = () => {
+  goBackBtn.classList.toggle("invisible");
+};
+
 // Remove dog from favorite
 const handleUnFavBtnClick = (dogId) => {
   // Last Entry in array
@@ -125,8 +134,32 @@ const handleUnFavBtnClick = (dogId) => {
 
   //   Filter non selected item from array
   favoriteDogArray = favoriteDogArray.filter((dog) => dog.id != dogId);
-  displayFavoriteData();
+  displayFavoriteData(favoriteDogArray);
+  goBackBtn.classList = "btn btn-success invisible";
+};
+
+// Handles Search Operation
+searchBtn.onclick = (event) => {
+  event.preventDefault();
+  const searchText = searchedText.value.toLowerCase().trim();
+
+  if (searchText != "") {
+    const filteredDogArray = favoriteDogArray.filter((dog) =>
+      dog.name.toLowerCase().includes(searchText)
+    );
+
+    if (filteredDogArray != "") displayFavoriteData(filteredDogArray);
+    else favoriteContainer.innerHTML = `"${searchText}" cannot be found.`;
+    searchedText.value = "";
+    toggleGoBackButtonVisibility();
+  }
+};
+
+// handles go back button action after search
+goBackBtn.onclick = () => {
+  displayFavoriteData(favoriteDogArray);
+  toggleGoBackButtonVisibility();
 };
 
 getData();
-displayFavoriteData();
+displayFavoriteData(favoriteDogArray);
