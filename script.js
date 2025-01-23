@@ -8,6 +8,8 @@ const goBackBtn = document.querySelector("#go-back-btn");
 
 // retrieve stored data
 let storedDogArray = JSON.parse(localStorage.getItem("storedDogs"));
+console.log(storedDogArray);
+
 let favoriteDogArray = storedDogArray || [];
 let isFavIconActive = false;
 
@@ -105,7 +107,7 @@ const handleFavBtnClick = (...data) => {
 // Display favorite data
 const displayFavoriteData = (dogArray = storedDogArray) => {
   let favDog = "";
-  if (dogArray != "") {
+  if (dogArray != null && dogArray != "") {
     dogArray.forEach((dog) => {
       favDog += ` <div class="card m-2 h-50" style="width: 18rem">
         <img
