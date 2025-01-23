@@ -6,7 +6,9 @@ const searchedText = document.querySelector("#search-text");
 const searchBtn = document.querySelector("#search-btn");
 const goBackBtn = document.querySelector("#go-back-btn");
 
-let favoriteDogArray = [];
+// retrieve stored data
+let storedDogArray = JSON.parse(localStorage.getItem("storedDogs"));
+let favoriteDogArray = storedDogArray || [];
 let isFavIconActive = false;
 
 // fetch data from API
@@ -70,6 +72,12 @@ const handleOnNextClick = () => {
   isFavIconActive = false;
 };
 
+// store data locally and update value
+const updateLocalStorage = () => {
+  localStorage.setItem("storedDogs", JSON.stringify(favoriteDogArray));
+  storedDogArray = JSON.parse(localStorage.getItem("storedDogs"));
+};
+
 // dynamically handles fav button color when clicked
 const handleFavBtnColor = () => {
   const favoriteIcon = document.getElementById("favorite-icon");
@@ -86,14 +94,16 @@ const handleFavBtnClick = (...data) => {
   //   Push data only when favorite icon is off
   if (!isFavIconActive) {
     favoriteDogArray.push(favoriteDog);
+    updateLocalStorage();
     isFavIconActive = true;
   }
   handleFavBtnColor();
-  displayFavoriteData(favoriteDogArray);
+
+  displayFavoriteData();
 };
 
 // Display favorite data
-const displayFavoriteData = (dogArray) => {
+const displayFavoriteData = (dogArray = storedDogArray) => {
   let favDog = "";
   if (dogArray != "") {
     dogArray.forEach((dog) => {
@@ -128,20 +138,18 @@ const toggleGoBackButtonVisibility = () => {
 // Remove dog from favorite
 const handleUnFavBtnClick = (dogId) => {
   // Last Entry in array
-  const lastItem = favoriteDogArray[favoriteDogArray.length - 1];
-
+  const lastItem = storedDogArray[storedDogArray.length - 1];
   //   Removed Item from array
-  const removedItem = favoriteDogArray.filter((dog) => dog.id == dogId);
-
+  const removedItem = storedDogArray.filter((dog) => dog.id == dogId);
   //   Handle fav icon behavior of item in selector container
   if (lastItem.id === removedItem[0].id) {
     isFavIconActive = false;
     handleFavBtnColor();
   }
-
-  //   Filter non selected item from array
-  favoriteDogArray = favoriteDogArray.filter((dog) => dog.id != dogId);
-  displayFavoriteData(favoriteDogArray);
+  //  Filter non selected item from array
+  favoriteDogArray = storedDogArray.filter((dog) => dog.id != dogId);
+  updateLocalStorage();
+  displayFavoriteData();
   goBackBtn.classList = "btn btn-success invisible";
 };
 
@@ -164,9 +172,9 @@ searchBtn.onclick = (event) => {
 
 // handles go back button action after search
 goBackBtn.onclick = () => {
-  displayFavoriteData(favoriteDogArray);
+  displayFavoriteData();
   toggleGoBackButtonVisibility();
 };
 
 getData();
-displayFavoriteData(favoriteDogArray);
+displayFavoriteData();
