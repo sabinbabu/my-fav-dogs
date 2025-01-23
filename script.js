@@ -28,8 +28,13 @@ const displayData = (data) => {
             />
             <div class="card-body">
               <h5 class="card-title">${data.name}</h5>
-              <p class="card-text">
-               ${data.temperament}
+              <p class="card-text d-flex flex-wrap gap-1">
+               ${data.temperament
+                 .split(",")
+                 .map((item) => {
+                   return `<span class="border border-success rounded p-1">${item}</span>`;
+                 })
+                 .join(" ")}
               </p>
                <p class="card-text">
                Height : ${data.height.metric} cm
@@ -48,7 +53,9 @@ const displayData = (data) => {
               </p>
               <div class="d-flex justify-content-between">
                 <button class="btn btn-success" onclick="handleOnNextClick()">Next</button>
-                <button class="btn" onclick = "handleFavBtnClick('${data.name},${data.image.url},${data.id}')">
+                <button class="btn" onclick = "handleFavBtnClick('${
+                  data.name
+                },${data.image.url},${data.id}')">
                   <i id="favorite-icon" class="fa-regular fa-heart"></i>
                 </button>
               </div>
