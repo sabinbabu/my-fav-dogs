@@ -45,72 +45,20 @@
     <!-- main -->
     <div class="main-container">
       <div class="row" style="height: 92vh">
-        <!-- dog selector -->
+        <!-- dog selector section -->
         <div
           id="dog-selector-container"
           class="col-4 d-flex justify-content-center align-items-center bg-success"
           style="--bs-bg-opacity: 0.5"
-        >
-          <div class="card" style="width: 18rem">
-            <img
-              id="dog-image"
-              class="card-img-top"
-              src="https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 id="dog-name" class="card-title">Card Title</h5>
-              <p id="dog-description" class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                nihil numquam non dolore voluptatem delectus nobis odit
-                repudiandae, laudantium adipisci soluta iste similique, eos quae
-                obcaecati sapiente deserunt excepturi accusantium!
-              </p>
-              <div class="d-flex justify-content-between">
-                <button id="next-btn" class="btn btn-success">Next</button>
-                <button id="fav-btn" class="btn">
-                  <i class="fa-regular fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- favorite -->
-        <div class="favorite-container col p-2 .bg-light.bg-gradient">
-          <h2 class="">My Favorites</h2>
-          <div class="d-flex flex-wrap">
-            <div class="card m-2" style="width: 18rem">
-              <img
-                class="card-img-top"
-                src="https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <div class="d-flex justify-content-end">
-                  <button id="fav-btn" class="btn">
-                    <i class="fa-solid fa-heart text-danger"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card m-2" style="width: 18rem">
-              <img
-                class="card-img-top"
-                src="https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <div class="d-flex justify-content-end">
-                  <button id="fav-btn" class="btn">
-                    <i class="fa-solid fa-heart text-danger"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        ></div>
+        <!-- favorite section -->
+        <div class="col p-2 .bg-light.bg-gradient" \>
+          <h2>My Favorites</h2>
+          <div
+            class="d-flex flex-wrap overflow-auto"
+            id="favorite-container"
+            style="height: 92vh"
+          ></div>
         </div>
       </div>
     </div>
